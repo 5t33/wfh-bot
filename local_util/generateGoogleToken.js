@@ -1,5 +1,5 @@
 "use strict";
-require('env-yaml').config({path: process.cwd() + '/serverless.env-local.yml'});
+require('env-yaml').config({path: process.cwd() + '/serverless.env-dev.yml'});
 
 /* This is a small script to be used for intializing
    the Google configuration. Calling the "list events"

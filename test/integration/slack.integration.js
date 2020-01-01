@@ -1,6 +1,6 @@
 require('env-yaml').config({path: __dirname + '/../serverless.env-test.yml'});
 
-const { getInfoBySlackId, postMessage, getInfoByEmail } = require('../../opt/slack');
+const { getInfoBySlackId, postMessage, getInfoByEmail, postReaction } = require('../../opt/slack');
 
 const chai = require('chai');
 const { expect } = chai;
@@ -10,7 +10,8 @@ const testUserEmail = process.env.SLACK_USER_EMAIL;
 const testUserName = process.env.SLACK_USER_FIRST_NAME;
 const slackWFHChannel = process.env.SLACK_WFH_CHANNEL;
 const slackBotUserId = process.env.WFH_BOT_SLACK_ID;
-const message = "Hi! this is the work from home bot. You can place yourself on the work from home calendar, or let your teamates know that you'll be in the office today by selecting either the house :house: or office :office: emoji"
+// const message = 'Where are you today?\n WFH / Remote :house: \n At the Office :office: \n OOO :face_with_thermometer:'
+const message = 'Where are you today?\n WFH / Remote :house: \n At the Office :office:'
 
 describe('infoBySlackId integration', () => {
   it('Successfully gets slackId by email', async () => {
@@ -37,5 +38,15 @@ describe('postMessage integration', () => {
     expect(res.message.text).to.equal(message);
     expect(res.channel).to.equal(slackWFHChannel);
     expect(res.message.user).to.equal(slackBotUserId);
+  });
+});
+
+describe('postReaction integration', () => {
+  it('correctly reacts to message in channel', async () => {
+    let res = await postMessage(slackWFHChannel, message,slackBotUserId);
+    let {ts} = res
+    let res2 = await postReaction(slackWFHChannel, ts, 'house');
+    expect(res.ok).to.be.true
+
   });
 });

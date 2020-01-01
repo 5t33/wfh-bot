@@ -1,5 +1,6 @@
 const controller = require('./controller');
-const messageText = "Hi! this is the work from home bot. You can place yourself on the work from home calendar, or let your teamates know that you'll be in the office today by selecting either the house :house: or office :office: emoji"
+// const messageText = 'Where are you today?\n WFH / Remote :house: \n At the Office :office: \n OOO :face_with_thermometer:'
+const messageText = 'Where are you today?\n WFH / Remote :house: \n At the Office :office:'
 
 
 module.exports.handler = async () => {
@@ -14,7 +15,9 @@ module.exports.handler = async () => {
     let res = await controller.postWFHDailyMessage(messageText);
     if(res.ok) {
       let {ts, channel, message} = res
+      await controller.postReactionToWFHDailyMessage(ts)
       await controller.putInMessagesTable({ts, channel, itemUser: message.user});
+
       response.body = JSON.stringify({
         timeStamp: res.ts,
         channel: res.channel,

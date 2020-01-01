@@ -15,8 +15,8 @@ const { expect } = chai;
 const testUserId = process.env.SLACK_USER_ID;
 const slackWFHChannel = process.env.SLACK_WFH_CHANNEL;
 const slackBotUserId = process.env.WFH_BOT_SLACK_ID;
-const message = "Hi! this is the work from home bot. You can place yourself on the work from home calendar, or let your teamates know that you'll be in the office today by selecting either the house :house: or office :office: emoji"
-
+// const message = 'Where are you today?\n WFH / Remote :house: \n At the Office :office: \n OOO :face_with_thermometer:'
+const message = 'Where are you today?\n WFH / Remote :house: \n At the Office :office:'
 // TODO:
 // Messed up in making these not call the serverless-offline functions by url.
 // Not using the endpoints, or at least invoking by calling the lambda "invoke"

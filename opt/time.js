@@ -20,6 +20,7 @@ const getStartAndEndOfDateDateTime = date => {
   })
 }
 
+// TODO: Why do these return start and end & the others return startDateTime and endDateTime
 const getStartAndEndOfTodayDate = () => {
   let start = moment().tz('America/New_York').startOf('Day')
   let end = start.clone().endOf('Day');

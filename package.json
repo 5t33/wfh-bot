@@ -36,6 +36,7 @@
     "mocha": "^6.2.0",
     "moment-timezone": "^0.5.26",
     "path": "^0.12.7",
+    "serverless": "^1.38.0",
     "serverless-dynamodb-local": "^0.2.38",
     "serverless-offline": "^5.10.1",
     "serverless-pseudo-parameters": "^2.4.0",

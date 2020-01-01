@@ -16,15 +16,15 @@ const listEvents = async(gCalId, date) => {
   };
 
   const auth = getAuth();
-  const {start, end } = date ? getStartAndEndOfDateDateTime(date) : getStartAndEndOfTodayDateTime();
+  const {startDateTime, endDateTime } = date ? getStartAndEndOfDateDateTime(date) : getStartAndEndOfTodayDateTime();
   const maxResults = 100;
   const calendar = google.calendar({ version: 'v3', auth });
   
   try {
     let res =  await calendar.events.list({
       calendarId: gCalId,
-      timeMin: start,
-      timeMax: end,
+      timeMin: startDateTime,
+      timeMax: endDateTime,
       maxResults: maxResults,
       singleEvents: true,
       orderBy: 'startTime',
@@ -83,7 +83,6 @@ const addToCal = async ({calendarId, attendees, summary, start, end}) => {
 const removeFromCal = async ({calendarId, eventId}) => {
   const auth = getAuth();
   const calendar = google.calendar({ version: 'v3', auth });
-  
   try {
     await new Promise((res, rej) => { 
       calendar.events.delete({

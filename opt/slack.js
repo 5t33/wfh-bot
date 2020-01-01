@@ -109,10 +109,30 @@ const postMessage = async (channel, msg, asUser) => {
  
 }
 
+const postReaction = async (channel, ts, emoji) => {
+  let url = `${slackAPIURL}/reactions.add?token=${token}&name=${emoji}&channel=${channel}&timestamp=${ts}`;
+    
+  try {
+    
+    let res = await axios.get(url)
+    if(res.status === 200 && res.data) {
+      console.error(`${emoji} Reaction made`, res.data)
+      return res.data;
+    } else {
+      throw new Error(res);
+    }
+  } catch(err) {
+    console.error(err)
+    throw new Error(err);
+  }
+ 
+}
+
 module.exports = {
   getInfoBySlackId,
   postMessage,
   getInfoByEmail,
   getSlackBotIdByName,
-  getChannelIdByName
+  getChannelIdByName,
+  postReaction
 }
