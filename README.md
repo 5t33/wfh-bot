@@ -137,7 +137,8 @@ Once the bot is deployed, it will post a message to the specified slack channel 
 4) Requiring the entire AWS-sdk is cumbersome and delays lambda cold starts. The opt layer should only require specific services. Haven't gotten that to work yet. 
 6) Many aspects of this should be parameterized. E.g., the message posted, the emoji used for declaring a work from home event, and the time of day that the message should be posted. 
 7) The google credentials.json file is contructed from environment variables based on the original file downloaded from the google authentication setup. The variables in this file may drift over time if Google makes any changes to that file.
-8) Acceptance tests are badly needed. 
+8) The "install-all-node-modules" should be replaced with lerna
+9) Acceptance tests are badly needed. 
 
 
 
