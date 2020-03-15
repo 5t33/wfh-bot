@@ -129,7 +129,7 @@ Once the bot is deployed, it will post a message to the specified slack channel 
 3) All users that could potentially be invited to a work from home event on the work from home calendar should have read access on that calendar as well. 
 4) When posting work-from-home events, the bot will use the first name of the user, but if that does not exist it will default to "real_name".
 
-# Current known bugs/issues and necessary improvements
+# TODO
 
 1) Deployment currently adds some files from the top level directory into each lambda. only the handler functions should be deployed to each lambda.
 2) Race condition between adding/removing a reaction. Adding a reaction and then deleting it fires off two different instances of the listener lambda. This leaves the potential for the deletion lambda to trigger first, and the addition lambda to be fired second, leaving the event on the calendar.
