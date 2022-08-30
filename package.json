@@ -34,7 +34,7 @@
     "chai-as-promised": "^7.1.1",
     "env-yaml": "^0.1.2",
     "mocha": "^6.2.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "path": "^0.12.7",
     "serverless": "^1.38.0",
     "serverless-dynamodb-local": "^0.2.38",
