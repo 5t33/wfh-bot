@@ -40,7 +40,7 @@
     "serverless-dynamodb-local": "^0.2.38",
     "serverless-offline": "^5.10.1",
     "serverless-pseudo-parameters": "^2.4.0",
-    "terminal-kit": "^1.31.2",
+    "terminal-kit": "^3.0.0",
     "yaml": "^1.6.0",
     "yargs": "^14.0.0"
   }
